@@ -1,5 +1,22 @@
-(defsystem "woo"
-  :version "0.11.5"
+#|
+  This file is a part of woo project.
+  Copyright (c) 2014 Eitaro Fukamachi (e.arrows@gmail.com)
+|#
+
+#|
+  Author: Eitaro Fukamachi (e.arrows@gmail.com)
+|#
+
+(in-package :cl-user)
+(defpackage woo-asd
+  (:use :cl :asdf))
+(in-package :woo-asd)
+
+#+quicklisp (ql:quickload :cffi-grovel)
+#-quicklisp (asdf:load-system :cffi-grovel)
+
+(defsystem woo
+  :version "0.11.6"
   :author "Eitaro Fukamachi"
   :license "MIT"
   :defsystem-depends-on ("cffi-grovel")
@@ -37,7 +54,6 @@
                    (:file "condition")
                    (:file "util")))
                  (:module "llsocket"
-                  :depends-on ("syscall")
                   :serial t
                   :components
                   ((:file "package")
